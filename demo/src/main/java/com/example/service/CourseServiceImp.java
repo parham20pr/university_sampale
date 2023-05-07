@@ -50,8 +50,19 @@ public class CourseServiceImp implements CourseService{
     }
 
     @Override
-    public void update(int idCourse, int idTeacher) {
-        courseRepository.updateTeacherForCourse(idTeacher,idCourse);
+    public void addTeacherToCourse(int teacherId, int courseId) {
+        courseRepository.updateTeacherForCourse(teacherId, courseId);
+    }
+
+    @Override
+    public List<Course> showCourseToTeacher(int teacherId) {
+        return courseRepository.showCourseToTeacher(teacherId);
+    }
+
+    @Override
+    public Integer deleteTeacherIdInCourse(int courseId) {
+        courseRepository.deleteTeacherIdInCourse(courseId);
+        return null;
     }
 
 

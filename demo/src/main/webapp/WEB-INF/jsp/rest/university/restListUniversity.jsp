@@ -1,115 +1,97 @@
-
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page isELIgnored="true" %>
 <html>
 
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css"
-      integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
-<script src="https://code.jquery.com/jquery-3.6.4.js" integrity="sha256-a9jBBRygX1Bh5lt8GZjXDzyOB+bWve9EiO7tROUtj/E="
-        crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+<head>
+    <%@include file="liberycdn.jsp" %>></include>
+    <script>
+        document.addEventListener('DOMContentLoaded',function (){
+            listOfUniversity();
+            getDataForEditUniversity();
+        })
 
-<link rel="stylesheet" href="https://cdn.datatables.net/1.13.4/css/jquery.dataTables.css" />
-<script src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.js"></script>
-
-<script>
-    $(document).ready(function () {
-        // Make an AJAX request to the server.
-        $.ajax({
-            url: "//127.0.0.1:8080/api/university/list",
-            data: {action: 'load'},
-            success: function (data) {
-                // Parse the JSON data and create the HTML for the table rows.
-                var rows = [];
-                $.each(data, function (index, row) {
-                    rows.push("<tr><td>" + row.id + "</td>" +
-                        "<td>" + row.name + "</td>" +
-                        "<td>" + row.state + "</td>" +
-                        "<td>" + row.city + "</td>" +
-                        "<td><button class='btn  btn-danger' onclick='deleteCourses(" + row.id + ")'>delete</button>" +
-                        "<button id='buttonEdit' onclick='fetchData(+row.id+)' class='btn btn-primary' data-bs-toggle='modal' data-bs-target='#reg-modal' data-id='" + row.id + "'>Edit</button></td></tr>");
-                });
-                // Append the table rows to the table.
-                $("#myTable tbody").append(rows);
-                $("#myTable").dataTable(rows);
-            }
-        });
-        // });
-    });
-</script>
-
-<script>
-    $(document).on('click', '#buttonEdit', function () {
-        var id = $(this).data('id');
-        $.ajax({
-            url: '/api/university/edit/' + id,
-            type: 'PUT',
-            dataType: 'json',
-            success: function (data) {
-
-                $('#name').val(data.name);
-                $('#idEdit').val(data.id);
-                $('#state').val(data.state);
-                $('#city').val(data.city);
-                $('#reg-modal').modal('show');
-
-
-            },
-            error: function (error) {
-                console.log(error);
-            }
-        });
-
-
-    });
-
-    function saveChanges() {
-
-        var id = $("#idEdit").val();
-        var name = $('#name').val();
-        var state = $('#state').val();
-        var city = $('#city').val();
-
-        if (!name || !state || !city) {
-            alert('Please fill in all fields!');
-            return;
+        function listOfUniversity(){
+            $.ajax({
+                url: "//127.0.0.1:8081/api/university/list",
+                data: {action: 'load'},
+                success: function (data) {
+                    // Parse the JSON data and create the HTML for the table rows.
+                    $("#listUniversityTemplate").tmpl(data).appendTo("#listUniversity");
+                    // Append the table rows to the table.
+                    $("#myTable").dataTable();
+                }
+            });
         }
 
-        $.ajax({
-            url: '/api/university/save',
-            type: 'POST',
-            contentType: "application/json",
-            data: JSON.stringify({
-                id: id,
-                name: name,
-                state: state,
-                city: city
-            }),
-            success: function (data) {
-                alert('Changes saved successfully!');
-                window.location.reload();
+        function getDataForEditUniversity() {
+            $(document).on('click', '#buttonEdit', function () {
+                var id = $(this).data('id');
+                $.ajax({
+                    url: '/api/university/edit/' + id,
+                    type: 'PUT',
+                    dataType: 'json',
+                    success: function (data) {
+
+                        $('#name').val(data.name);
+                        $('#idEdit').val(data.id);
+                        $('#state').val(data.state);
+                        $('#city').val(data.city);
+                        $('#reg-modal').modal('show');
+
+
+                    },
+                    error: function (error) {
+                        console.log(error);
+                    }
+                });
+            });
+        }
+
+        function saveChanges() {
+
+            var id = $("#idEdit").val();
+            var name = $('#name').val();
+            var state = $('#state').val();
+            var city = $('#city').val();
+
+            if (!name || !state || !city) {
+                alert('Please fill in all fields!');
+                return;
             }
-        });
-    }
 
-    function deleteCourses(id) {
-        $.ajax({
-
-                url: "/api/university/delete/" + id,
-                type: "delete",
-                method: "delete",
-                success: function () {
-                    alert("ok shod")
+            $.ajax({
+                url: '/api/university/save',
+                type: 'POST',
+                contentType: "application/json",
+                data: JSON.stringify({
+                    id: id,
+                    name: name,
+                    state: state,
+                    city: city
+                }),
+                success: function (data) {
+                    alert('Changes saved successfully!');
                     window.location.reload();
                 }
+            });
+        }
 
-            }
-        )
-    }
+        function deleteCourses(id) {
+            $.ajax({
 
-</script>
+                    url: "/api/university/delete/" + id,
+                    type: "delete",
+                    method: "delete",
+                    success: function () {
+                        alert("ok shod")
+                        window.location.reload();
+                    }
 
+                }
+            )
+        }
 
-<head>
+    </script>
     <title>List University</title>
 </head>
 <body>
@@ -127,7 +109,19 @@
                 <th>Action</th>
             </tr>
             </thead>
-            <tbody>
+            <tbody id="listUniversity">
+                <script id="listUniversityTemplate" type="text/template">
+                    <tr>
+                        <td>${id}</td>
+                        <td>${name}</td>
+                        <td>${state}</td>
+                        <td>${city}</td>
+                        <td>
+                            <button class='btn  btn-danger' onclick='deleteCourses("${id}")'>delete</button>
+                            <button id='buttonEdit' class='btn btn-primary' data-bs-toggle='modal' data-bs-target='#reg-modal' data-id='${id}'>Edit</button>
+                        </td>
+                    </tr>
+                </script>
 
             </tbody>
         </table>

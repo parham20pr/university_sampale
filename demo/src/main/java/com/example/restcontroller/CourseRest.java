@@ -15,9 +15,6 @@ public class CourseRest {
     @Autowired
     CourseServiceImp courseServiceImp;
 
-    @Autowired
-    CourseRepository courseRepository;
-
     @GetMapping("/list")
     public List<Course>list(){
         return courseServiceImp.getAllCourse();
@@ -46,7 +43,18 @@ public class CourseRest {
     }
 
     @PostMapping("/updateteacher/{idteacher}/{idcourse}")
-    public String addTeacherToCourse(@PathVariable int idteacher,@PathVariable int idcourse){
-       return courseRepository.updateTeacherForCourse(idteacher, idcourse);
+    public void addTeacherToCourse(@PathVariable int idteacher,@PathVariable int idcourse){
+        courseServiceImp.addTeacherToCourse(idteacher, idcourse);
+    }
+
+    @GetMapping("/showcoursetoteacher/{teacherId}")
+    public List<Course> showCourseToTeacher(@PathVariable int teacherId){
+       return courseServiceImp.showCourseToTeacher(teacherId);
+
+    }
+
+    @DeleteMapping("/deleteteacheridincourse/{courseId}")
+    public Integer deleteTeacherIdInCourse(@PathVariable("courseId") int courseId){
+        return courseServiceImp.deleteTeacherIdInCourse(courseId);
     }
 }

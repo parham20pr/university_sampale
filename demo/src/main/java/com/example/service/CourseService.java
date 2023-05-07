@@ -14,6 +14,10 @@ public interface CourseService {
 
     Course getCourseById(int id);
 
-    void  update (int idCourse,int idTeacher);
+    void  addTeacherToCourse (int teacherId,int courseId);
+
+    List<Course> showCourseToTeacher(int teacherId);
+
+    Integer deleteTeacherIdInCourse(int courseId);
 
 }

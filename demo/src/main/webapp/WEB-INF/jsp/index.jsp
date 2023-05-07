@@ -17,11 +17,23 @@
     <title>index</title>
 </head>
 <body>
-<div class="col-lg-12 text-center">
-    <button onclick="location.href='/course/list'" class="btn btn-outline-danger  btn-lg">course list</button><br>
-    <button onclick="location.href='/teacher/list'" class="btn btn-outline-danger  btn-lg">teacher list</button><br>
-    <button onclick="location.href='/student/list'" class="btn btn-outline-danger  btn-lg">students list</button><br>
-    <button onclick="location.href='/university/list'" class="btn btn-outline-danger  btn-lg">universites list</button>
-</div>
+    <div class="row">
+        <div class="col-lg-12  text-center ">
+            <div class="my-2">
+                <button onclick="location.href='/course/list'" class="btn btn-outline-danger btn-lg">course list</button>
+            </div>
+            <div class="my-2">
+                <button onclick="location.href='/teacher/list'" class="btn btn-outline-danger btn-lg">teacher list</button>
+            </div>
+            <div class="my-2">
+                <button onclick="location.href='/student/list'" class="btn btn-outline-danger btn-lg">students list</button>
+            </div>
+            <div class="my-2">
+                <button onclick="location.href='/university/list'" class="btn btn-outline-danger btn-lg">universites list</button>
+            </div>
+        </div>
+    </div>
+
 </body>
+
 </html>

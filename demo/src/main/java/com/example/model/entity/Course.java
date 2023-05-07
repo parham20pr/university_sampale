@@ -3,6 +3,7 @@ package com.example.model.entity;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import javax.persistence.*;
+import javax.validation.constraints.Pattern;
 import java.util.Set;
 
 @Entity
@@ -15,6 +16,7 @@ public class Course {
     private int id;
 
     @Column(name = "title",nullable = false,length = 200)
+//    @Pattern(regexp = "[a-zA-Z]+{50},")
     private  String title;
 
     @Column(name = "unit",nullable = false,length = 200)

@@ -52,4 +52,9 @@ public class StudentRest {
     public List<Course> showDetialCourse(@PathVariable int idstudent){
         return studentServiceImp.getCourseByStudentId(idstudent);
     }
+
+    @DeleteMapping("/deletecourse/{idstudent}/{idcourse}")
+    public String deleteCourseByIdStudent(@PathVariable int idstudent,@PathVariable int idcourse){
+        return  studentServiceImp.deleteCourseById(idstudent, idcourse);
+    }
 }
