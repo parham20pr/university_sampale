@@ -14,7 +14,8 @@
             getDataFormStudentForEdit();
             getDataFromUniversityForEditStudent();
             getDataFromCourseForAddToStudent();
-            getDataFromCourseForEdit;
+            getDataFromCourseForEdit();
+
         })
 
         var student = null;

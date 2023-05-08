@@ -1,6 +1,7 @@
 package com.example.model.entity;
 
 import javax.persistence.*;
+import javax.validation.constraints.Pattern;
 
 @Entity
 @Table(name = "teacher")
@@ -11,10 +12,13 @@ public class Teacher {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
+
     @Column(name = "firstname",nullable = false , length =200)
+    @Pattern(regexp = "[a-zA-Z]{3,50}",message = "eshtebah dari mizani for firstname ")
     private String firstname;
 
     @Column(name = "lastname",nullable = false , length =200)
+    @Pattern(regexp = "[a-zA-Z]{3,50}",message = "eshtebah dari mizani for lastname ")
     private String lastname;
 
     public Teacher() {

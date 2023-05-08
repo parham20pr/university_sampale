@@ -90,14 +90,14 @@
             <div class="form-group form-group-lg">
                 <label class="col-sm-4 control-label">fristname :</label>
                 <div class="col-sm-4">
-                    <input type="text" class="form-control" id="fristname" name="fristname"/>
+                    <input type="text" class="form-control" id="fristname" name="fristname" maxlength="50" minlength="3"/>
                 </div>
             </div>
 
             <div class="form-group form-group-lg">
                 <label class="col-sm-4 control-label">lastname :</label>
                 <div class="col-sm-4">
-                    <input type="text" class="form-control" id="lastname" name="lastname"/>
+                    <input type="text" class="form-control" id="lastname" name="lastname" maxlength="50" minlength="3"/>
                 </div>
             </div>
 

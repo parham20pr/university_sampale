@@ -59,21 +59,21 @@
             <div class="form-group form-group-lg">
                 <label class="col-sm-4 control-label">title :</label>
                 <div class="col-sm-4">
-                    <input type="text" class="form-control" id="title" name="title"  maxlength="50" minlength="3" />
+                    <input type="text" class="form-control" id="title" name="title" maxlength="50" minlength="3" />
                 </div>
             </div>
 
             <div class="form-group form-group-lg">
                 <label class="col-sm-4 control-label">unit</label>
                 <div class="col-sm-4">
-                    <input type="text" class="form-control" id="unit" name="unit" maxlength="50" minlength="1"/>
+                    <input type="text" class="form-control" id="unit" name="unit" maxlength="50" minlength="1" />
                 </div>
             </div>
 
             <div class="form-group form-group-lg">
                 <label class="col-sm-4 control-label">Event Place</label>
                 <div class="col-sm-4">
-                    <input type="text" class="form-control" id="eventplace" name="eventplace" maxlength="50" minlength="3"/>
+                    <input type="text" class="form-control" id="eventplace" name="eventplace" maxlength="50" minlength="3" />
                 </div>
             </div>
 

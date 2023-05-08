@@ -1,6 +1,7 @@
 package com.example.model.entity;
 
 import javax.persistence.*;
+import javax.validation.constraints.Pattern;
 import java.io.StringWriter;
 
 @Entity
@@ -13,12 +14,15 @@ public class University {
     private int id;
 
     @Column(name = "name",nullable = false , length =200)
+    @Pattern(regexp = "[a-zA-Z]{3,50}",message = "eshtebah dari mizani for name ")
     private String name;
 
     @Column(name = "state",nullable = false , length =200)
+    @Pattern(regexp = "[a-zA-Z]{3,50}",message = "eshtebah dari mizani for state ")
     private String state;
 
     @Column(name = "city",nullable = false , length =200)
+    @Pattern(regexp = "[a-zA-Z]{3,50}",message = "eshtebah dari mizani for city ")
     private String city;
 
     public University() {

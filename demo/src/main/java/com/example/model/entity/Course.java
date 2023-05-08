@@ -3,6 +3,8 @@ package com.example.model.entity;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import javax.persistence.*;
+import javax.validation.constraints.Max;
+import javax.validation.constraints.Min;
 import javax.validation.constraints.Pattern;
 import java.util.Set;
 
@@ -16,13 +18,14 @@ public class Course {
     private int id;
 
     @Column(name = "title",nullable = false,length = 200)
-    @Pattern(regexp = "^[a-zA-Z0-9]{3,50}$",message = "eshtebah dari mizani")
+    @Pattern(regexp = "[a-zA-Z]{3,50}",message = "eshtebah dari mizani for title ")
     private  String title;
 
+//    @Pattern(regexp = "[0-9]",message = "eshtebah dari mizani for unit ")
     @Column(name = "unit",nullable = false,length = 200)
     private int unit;
 
-    @Pattern(regexp = "^[a-zA-Z0-9]{3,50}$",message = "eshtebah dari mizani")
+    @Pattern(regexp = "[a-zA-Z]{3,50}",message = "eshtebah dari mizani for eventplace")
     @Column(name = "eventplace",nullable = false,length = 200)
     private String eventplace;
 

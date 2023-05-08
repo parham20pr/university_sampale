@@ -3,6 +3,7 @@ package com.example.model.entity;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import javax.persistence.*;
+import javax.validation.constraints.Pattern;
 import java.util.Set;
 
 @Entity
@@ -15,9 +16,11 @@ public class Student {
     private int id;
 
     @Column(name = "firstname",nullable = false , length =200)
+    @Pattern(regexp = "[a-zA-Z]{3,50}",message = "eshtebah dari mizani for firstname ")
     private String firstname;
 
     @Column(name = "lastname",nullable = false , length =200)
+    @Pattern(regexp = "[a-zA-Z]{3,50}",message = "eshtebah dari mizani for lastname ")
     private String lastname;
 
     @ManyToMany

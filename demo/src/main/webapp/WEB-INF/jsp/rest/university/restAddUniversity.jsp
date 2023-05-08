@@ -53,21 +53,21 @@
             <div class="form-group form-group-lg">
                 <label class="col-sm-4 control-label">nameuniversity :</label>
                 <div class="col-sm-4">
-                    <input type="text" class="form-control" id="name" name="name"/>
+                    <input type="text" class="form-control" id="name" name="name" maxlength="50" minlength="3"/>
                 </div>
             </div>
 
             <div class="form-group form-group-lg">
                 <label class="col-sm-4 control-label">state </label>
                 <div class="col-sm-4">
-                    <input type="text" class="form-control" id="state" name="state"/>
+                    <input type="text" class="form-control" id="state" name="state" maxlength="50" minlength="3"/>
                 </div>
             </div>
 
             <div class="form-group form-group-lg">
                 <label class="col-sm-4 control-label">city :</label>
                 <div class="col-sm-4">
-                    <input type="text" class="form-control" id="city" name="city"/>
+                    <input type="text" class="form-control" id="city" name="city" maxlength="50" minlength="3"/>
                 </div>
             </div>
 

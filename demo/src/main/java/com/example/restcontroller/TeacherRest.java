@@ -2,6 +2,7 @@ package com.example.restcontroller;
 
 import com.example.model.entity.Course;
 import com.example.model.entity.Teacher;
+import com.example.service.TeacherService;
 import com.example.service.TeacherServiceImp;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -13,7 +14,7 @@ import java.util.List;
 public class TeacherRest {
 
     @Autowired
-    TeacherServiceImp teacherServiceImp;
+    TeacherService teacherServiceImp;
 
     @GetMapping("/list")
     public List<Teacher> list(){
